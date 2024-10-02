@@ -1,0 +1,155 @@
+body {
+    text-align: center;
+    margin: 0;
+}
+
+header {
+    padding: 30px 0;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    color: aqua;
+    background: linear-gradient(orange, red);
+}
+
+header a {
+    text-decoration: none;
+    color: cornsilk;
+}
+
+header a:hover {
+    text-decoration: underline;
+    scale: 1.2;
+}
+
+
+.table-check {
+    border: 1px solid #eee;
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 20px;
+
+    opacity: 0.8;
+}
+
+.table-check th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+
+.table-check td {
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.hit {
+    background-color: green;
+    padding-bottom: 100px;
+}
+
+.miss {
+    background-color: red;
+}
+
+.main {
+    background-size: 100% auto;
+}
+
+.graph-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.graph-data > div {
+    width: 45%;
+    padding: 50px 0;
+
+}
+
+#coordinates {
+    text-align: center;
+    color: #00FF00;
+}
+
+
+button {
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: 5px;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+form>div {
+    margin: 20px 0;
+}
+
+input[type="number"] {
+    padding: 5px;
+
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type="number"]:focus {
+    outline: 2px solid blue;
+}
+
+button:hover,
+button:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+footer {
+    padding: 20px 0;
+}
+
+.vt {
+    width: 40px;
+    height: auto;
+}
+.vt:hover {
+    transition: .3s;
+    scale: 1.3;
+}
