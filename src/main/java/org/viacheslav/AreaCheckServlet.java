@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 public class AreaCheckServlet extends HttpServlet {
-    Logger logger;
+    public static final Logger logger = Logger.getLogger("AreaCheckServlet");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,6 +21,8 @@ public class AreaCheckServlet extends HttpServlet {
             int x = Integer.parseInt(request.getParameter("x"));
             double y = Double.parseDouble(request.getParameter("y"));
             double r = Double.parseDouble(request.getParameter("r"));
+
+            logger.info(x + " " + y + " " + r);
 
             Point point = new Point(x, y, r);
             HttpSession session = request.getSession();
@@ -32,9 +34,8 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             pl.addPoint(point);
-            request.setAttribute("result", point.getIsHit());
-
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            logger.info(pl.getPoints().toString());
+            request.getRequestDispatcher("./result.jsp").forward(request, response);
 
 
         } catch (Exception e) {

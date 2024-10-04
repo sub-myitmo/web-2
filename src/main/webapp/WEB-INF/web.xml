@@ -15,10 +15,10 @@
 
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/controller/*</url-pattern>
+        <url-pattern>/controller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AreaCheckServlet</servlet-name>
-        <url-pattern>/check/*</url-pattern>
+        <url-pattern>/check</url-pattern>
     </servlet-mapping>
 </web-app>

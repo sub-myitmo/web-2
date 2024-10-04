@@ -1,25 +1,113 @@
-const svgCenterX = 150;
-const svgCenterY = 150;
-const month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+const center = 150;
+let baseR = 60;
 
 const showCorrect = document.getElementById("online-checker");
 
+const svg = document.getElementById("paint");
+
+window.onload = function () {
+    svg.innerHTML = `
+        <line stroke="black" x1="0" x2="300" y1="150" y2="150"></line>
+        <line stroke="black" x1="150" x2="150" y1="0" y2="300"></line>
+        <polygon fill="black" points="150,0 144,15 156,15" stroke="black"></polygon>
+        <polygon fill="black" points="300,150 285,156 285,144" stroke="black"></polygon>
+                
+        <!-- lines on lines -->
+        <line stroke="black" x1="${center + baseR / 2}" x2="${center + baseR / 2}" y1="155" y2="145"></line>
+        <line stroke="black" x1="${center + baseR}" x2="${center + baseR}" y1="155" y2="145"></line>
+
+        <line stroke="black" x1="${center - baseR}" x2="${center - baseR}" y1="155" y2="145"></line>
+        <line stroke="black" x1="${center - baseR / 2}" x2="${center - baseR / 2}" y1="155" y2="145"></line>
+
+        <line stroke="black" x1="145" x2="155" y1="${center - baseR / 2}" y2="${center - baseR / 2}"></line>
+        <line stroke="black" x1="145" x2="155" y1="${center - baseR}" y2="${center - baseR}"></line>
+
+        <line stroke="black" x1="145" x2="155" y1="${center + baseR / 2}" y2="${center + baseR / 2}"></line>
+        <line stroke="black" x1="145" x2="155" y1="${center + baseR}" y2="${center + baseR}"></line>
+
+        <!-- Rs and X, Y -->
+        <text fill="black" x="${center + baseR/2 - 10}" y="140">R/2</text>
+        <text fill="black" x="${center + baseR - 5}" y="140">R</text>
+
+        <text fill="black" x="${center - baseR - 8}" y="140">-R</text>
+        <text fill="black" x="${center - baseR/2 - 13}" y="140">-R/2</text>
+
+        <text fill="black" x="160" y="${center - baseR + 5}">R</text>
+        <text fill="black" x="160" y="${center - baseR/2 + 5}">R/2</text>
+
+        <text fill="black" x="160" y="${center + baseR/2 + 3}">-R/2</text>
+        <text fill="black" x="160" y="${center + baseR + 3}">-R</text>
+
+        <text fill="black" x="285" y="140">X</text>
+        <text fill="black" x="160" y="15">Y</text>
+
+        <polygon points="150,150 ${center + baseR},150 150,${center - baseR / 2}" fill-opacity="0.4" stroke="navy" fill="blue"></polygon>
+
+        <rect x="${center - baseR}" y="${center - baseR}" width="${baseR}" height="${baseR}" fill-opacity="0.4" stroke="navy" fill="blue"></rect>
+
+        <path d="M 150 150 L 150 ${center + baseR} A${baseR},${baseR} 0 0,1 ${center - baseR},150 Z" fill-opacity="0.4" stroke="navy"
+              fill="blue"></path>
+        `;
+}
+
 function draw(x, y, r) {
+
     if (checker(x, y, r)) {
+        x = +x;
+        y = +y;
+        r = +r;
+        if (Math.abs(x / r) >= 2.5 || Math.abs(y / r) >= 2.5) baseR = Math.floor(150 / Math.max(Math.abs(x / r), Math.abs(y / r))) - 5;
+        else baseR = 60;
+        svg.innerHTML =  `
+        <line stroke="black" x1="0" x2="300" y1="150" y2="150"></line>
+        <line stroke="black" x1="150" x2="150" y1="0" y2="300"></line>
+        <polygon fill="black" points="150,0 144,15 156,15" stroke="black"></polygon>
+        <polygon fill="black" points="300,150 285,156 285,144" stroke="black"></polygon>
+                
+        <!-- lines on lines -->
+        <line stroke="black" x1="${center + baseR / 2}" x2="${center + baseR / 2}" y1="155" y2="145"></line>
+        <line stroke="black" x1="${center + baseR}" x2="${center + baseR}" y1="155" y2="145"></line>
 
-        const coordinateX = svgCenterX + x / r * 60;
-        const coordinateY = svgCenterY - y / r * 60;
+        <line stroke="black" x1="${center - baseR}" x2="${center - baseR}" y1="155" y2="145"></line>
+        <line stroke="black" x1="${center - baseR / 2}" x2="${center - baseR / 2}" y1="155" y2="145"></line>
 
+        <line stroke="black" x1="145" x2="155" y1="${center - baseR / 2}" y2="${center - baseR / 2}"></line>
+        <line stroke="black" x1="145" x2="155" y1="${center - baseR}" y2="${center - baseR}"></line>
+
+        <line stroke="black" x1="145" x2="155" y1="${center + baseR / 2}" y2="${center + baseR / 2}"></line>
+        <line stroke="black" x1="145" x2="155" y1="${center + baseR}" y2="${center + baseR}"></line>
+
+        <!-- Rs and X, Y -->
+<!--        <text fill="black" x="${center + baseR/2 - 10}" y="140" font-size="0.5em">R/2</text>-->
+        <text fill="black" x="${center + baseR - 5}" y="140">R</text>
+
+        <text fill="black" x="${center - baseR - 8}" y="140">-R</text>
+<!--        <text fill="black" x="${center - baseR/2 - 13}107" y="140" font-size="0.5em">-R/2</text>-->
+
+        <text fill="black" x="160" y="${center - baseR + 5}">R</text>
+<!--        <text fill="black" x="160" y="${center - baseR/2 + 5}" font-size="0.5em">R/2</text>-->
+
+<!--        <text fill="black" x="160" y="${center + baseR/2 + 3}" font-size="0.5em">-R/2</text>-->
+        <text fill="black" x="160" y="${center + baseR + 3}">-R</text>
+
+        <text fill="black" x="285" y="140">X</text>
+        <text fill="black" x="160" y="15">Y</text>
+
+        <polygon points="150,150 ${center + baseR},150 150,${center - baseR / 2}" fill-opacity="0.4" stroke="navy" fill="blue"></polygon>
+
+        <rect x="${center - baseR}" y="${center - baseR}" width="${baseR}" height="${baseR}" fill-opacity="0.4" stroke="navy" fill="blue"></rect>
+
+        <path d="M 150 150 L 150 ${center + baseR} A${baseR},${baseR} 0 0,1 ${center - baseR},150 Z" fill-opacity="0.4" stroke="navy"
+              fill="blue"></path>
+        <circle id="point" cx="${center + x / r * baseR}" cy="${center - y / r * baseR}" r="4" fill="red" stroke="white" visibility="visible"/>`
+    } else {
         let pointElement = document.getElementById('point');
-
-        pointElement.setAttribute('cx', "" + coordinateX)
-        pointElement.setAttribute('cy', "" + coordinateY)
-        pointElement.setAttribute('visibility', 'visible')
+        if (pointElement) pointElement.setAttribute('visibility', 'hidden')
     }
 }
 
 function checker(x, y, r) {
-    let isValidate = !isNaN(+x) && !isNaN(+y) && !isNaN(+r) && +y >= -3 && +y <= 5;
+    let isValidate = !isNaN(+x) && !isNaN(+y) && !isNaN(+r) && +y >= -3 && +y <= 5 && y.trim();
     if (isValidate) {
         showCorrect.className = "correct";
         showCorrect.textContent = "Данные корректны";
@@ -31,21 +119,25 @@ function checker(x, y, r) {
 }
 
 function getActualX() {
-    return $("input[name='x-parameter']:checked").val()
+    return $("input[name='x']:checked").val()
 }
 
 function getActualY() {
-    return $("input[name='y-parameter']").val()
+    return $("input[name='y']").val()
 }
 
 function getActualR() {
-    return $("input[name='r-parameter']:checked").val()
+    return $("input[name='r']:checked").val()
 }
 
 
 $("#clear").on("click", function (e) {
     e.preventDefault();
     $("#check tr:not(:first)").remove();
+    $.ajax({
+        url: "controller?" + $.param({"clear": 1}),
+        type: "GET"
+    });
 })
 
 $("#Y-text").on("change", function () {
@@ -53,76 +145,60 @@ $("#Y-text").on("change", function () {
     }
 )
 
-$('input[type=radio][name=x-parameter]').on("change", function () {
+$('input[type=radio][name=x]').on("change", function () {
         draw(getActualX(), getActualY(), getActualR());
     }
 )
 
-$('input[type=radio][name=r-parameter]').on("change", function () {
-        draw(getActualX(), getActualY(), getActualR());
-    }
-)
-
+$("input[type='checkbox']").on("change", function () {
+    $("input[name='" + this.name + "']").not(this).prop("checked", false);
+    draw(getActualX(), getActualY(), getActualR());
+});
 
 const table = document.getElementById("check")
 
 
-$("#submit").on("click", function (e) {
-    e.preventDefault();
-    let now = new Date();
+$("#submit").on("click", function () {
+    //e.preventDefault();
+    // let now = new Date();
 
     let data = {
         "x": getActualX(),
         "y": getActualY(),
         "r": getActualR()
     }
+
+    // const form = new FormData();
+    // form.append("x", getActualX());
+    // form.append("y", getActualY());
+    // form.append("R", getActualR());
+
     if (!checker(data.x, data.y, data.r)) {
-        return;
+        console.log("хуета!");
     }
+    // async function sendToServer() {
+    //     const url = "controller?" + new URLSearchParams(form).toString();
+    //     const response = await fetch(url, {method: "get"});
+    //
+    //     if (!response.ok) {
+    //         alert("Не удалось отправить точку.");
+    //     }
+    //     return response;
+    // }
+    // sendToServer().then(r => console.log(r));
+    //
+    // $.ajax({
+    //     url: "controller?" + $.param(data),
+    //     type: "GET"
+    // });
 
-
-    $.ajax({
-        url: "controller?" + $.param(data),
-        type: "GET",
-        dataType: "json",
-        success: function (response) {
-
-            if (response.error != null) {
-                alert("Ответ от сервера не получен");
-                console.log(response);
-            } else {
-                let newRow = table.insertRow(1);
-                const rowX = newRow.insertCell(0);
-                const rowY = newRow.insertCell(1);
-                const rowR = newRow.insertCell(2);
-                const rowResult = newRow.insertCell(3);
-                const rowNow = newRow.insertCell(4);
-                const rowTime = newRow.insertCell(5);
-
-                rowX.textContent = data.x;
-                rowY.textContent = data.y;
-                rowR.textContent = data.r;
-                if (response.result) {
-                    rowResult.textContent = "Да"
-                    newRow.className = "hit"
-                } else {
-                    rowResult.textContent = "Нет"
-                    newRow.className = "miss"
-                }
-                if (now.getSeconds() < 10) rowNow.textContent = now.getHours().toString() + ":" + now.getMinutes().toString() + ":0" + now.getSeconds().toString() + " " + now.getDate() + " " + month[now.getMonth()] + " " + now.getFullYear()
-                else rowNow.textContent = now.getHours().toString() + ":" + now.getMinutes().toString() + ":" + now.getSeconds().toString() + " " + now.getDate() + " " + month[now.getMonth()] + " " + now.getFullYear()
-                rowTime.textContent = response.time
-                sessionStorageSize++
-                window.sessionStorage.setItem(sessionStorageSize.toString(), `${rowX.textContent}, ${rowY.textContent}, ${rowR.textContent}, ${rowResult.textContent}, ${rowNow.textContent}, ${rowTime.textContent}`);
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("Ошибка:", textStatus, errorThrown);
-        }
-    });
+    //window.location.href = "/server/controller?x=" + data.x + "&y=" + data.y + "&r=" + data.r;
 })
 
 
+if ($(document).height() <= $(window).height()) {
+    $(".footer").addClass("fixed-bottom");
+}
 
 
 

@@ -14,13 +14,8 @@
 <body>
 
 <!-- header -->
-<header class="meme">
-    <h1>Веб-программирование, Лабораторная работа №1, Вариант 184</h1>
-    <h2>
-        <a href="https://github.com/petrovviacheslav">
-            Петров Вячеслав Маркович, P3208
-        </a>
-    </h2>
+<header>
+    <h2><a href="https://github.com/petrovviacheslav">Petrov Viacheslav Markovich P3208 lab2 var.784670</a></h2>
 </header>
 
 
@@ -35,7 +30,6 @@
             <th scope="col">R</th>
             <th scope="col">Попал?</th>
             <th scope="col">Дата</th>
-            <th scope="col">Время работы скрипта, микросек</th>
         </tr>
 
         <% PointList pl = (PointList) request.getSession().getAttribute("PointList");
@@ -62,15 +56,18 @@
             <td>
                 <%= point.getIsHit() ? "Да" : "Нет" %>
             </td>
+            <td>
+                <%= point.getDate() %>
+            </td>
         </tr>
         <% } %>
     </table>
     <% } %>
 
-    <h1 id="toIndex"><a href="index.jsp">Съёбываем на базу</a></h1>
+    <h1 id="toIndex"><a href="./">Съёбываем на базу</a></h1>
 </main>
 <!-- footer -->
-<footer>
+<footer class="footer">
     <div>
         <a href="https://se.ifmo.ru">
             <img class="vt" src="img/favicon.jpg" alt="">
