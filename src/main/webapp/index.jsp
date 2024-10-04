@@ -9,7 +9,10 @@
     <title>Web Lab #2</title>
 
     <link rel="icon" href="img/baby.jpg">
-    <link href="style.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/header.css" rel="stylesheet">
+    <link href="styles/footer.css" rel="stylesheet">
+    <link href="styles/results.css" rel="stylesheet">
 </head>
 <body>
 
@@ -24,15 +27,6 @@
     <div class="graph-data">
         <div>
             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" id="paint">
-
-                <!-- lines -->
-<%--                <line stroke="black" x1="0" x2="300" y1="150" y2="150"></line>--%>
-<%--                <line stroke="black" x1="150" x2="150" y1="0" y2="300"></line>--%>
-<%--                <polygon fill="black" points="150,0 144,15 156,15" stroke="black"></polygon>--%>
-<%--                <polygon fill="black" points="300,150 285,156 285,144" stroke="black"></polygon>--%>
-
-                <!-- dot -->
-<%--                <circle id="point" cx="150" cy="150" r="4" fill="red" stroke="white" visibility="hidden"/>--%>
 
             </svg>
         </div>
@@ -116,9 +110,7 @@
             if (pl == null) {
         %>
         <tr>
-            <td colspan="5" id="no-results">
-                Нет результатов
-            </td>
+            <td colspan="5" id="no-results">Нет результатов</td>
         </tr>
 
         <% } else {
@@ -140,9 +132,8 @@
                 <%= point.getDate() %>
             </td>
         </tr>
-        <% } %>
+        <% }} %>
     </table>
-    <% } %>
 
 
 </div>

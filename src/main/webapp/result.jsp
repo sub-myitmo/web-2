@@ -9,7 +9,9 @@
     <title>Web Lab #2</title>
 
     <link rel="icon" href="img/baby.jpg">
-    <link href="style.css" rel="stylesheet">
+    <link href="styles/header.css" rel="stylesheet">
+    <link href="styles/footer.css" rel="stylesheet">
+    <link href="styles/results.css" rel="stylesheet">
 </head>
 <body>
 
@@ -36,7 +38,7 @@
             if (pl == null) {
         %>
         <tr>
-            <td colspan="6" id="no-results">
+            <td colspan="5" id="no-results">
                 Нет результатов
             </td>
         </tr>
@@ -60,11 +62,10 @@
                 <%= point.getDate() %>
             </td>
         </tr>
-        <% } %>
+        <% }} %>
     </table>
-    <% } %>
 
-    <h1 id="toIndex"><a href="./">Съёбываем на базу</a></h1>
+    <h1><a href="./" id="toIndex">На главную</a></h1>
 </main>
 <!-- footer -->
 <footer class="footer">

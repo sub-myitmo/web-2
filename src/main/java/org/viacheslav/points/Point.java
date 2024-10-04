@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Point {
-    private final int x;
+    private final double x;
     private final double y;
     private final double r;
     private final String date;
     private final boolean isHit;
 
-    public Point(int x, double y, double r) {
+    public Point(double x, double y, double r) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -47,7 +47,7 @@ public class Point {
         return false;
     }
 
-    public int getX() {
+    public double getX() {
         return this.x;
     }
 

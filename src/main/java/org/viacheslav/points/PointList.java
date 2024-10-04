@@ -2,12 +2,9 @@ package org.viacheslav.points;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-
-
-public class PointList implements Serializable, Iterable<Point> {
+public class PointList implements Serializable {
     private final List<Point> points;
 
     public PointList() {
@@ -22,9 +19,6 @@ public class PointList implements Serializable, Iterable<Point> {
         points.clear();
     }
 
-    public Iterator<Point> iterator() {
-        return points.iterator();
-    }
 
     public List<Point> getPoints() {
         return points;

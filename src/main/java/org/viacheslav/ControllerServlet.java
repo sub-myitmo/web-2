@@ -17,12 +17,13 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.info("The server runs");
-        if (request.getParameter("clear") != null) {
-            ((PointList) request.getSession().getAttribute("PointList")).clear();
-            request.getRequestDispatcher("./").forward(request, response);
-        }
+
         if (request.getParameter("x") != null && request.getParameter("y") != null && request.getParameter("r") != null) {
             request.getRequestDispatcher("/check").forward(request, response);
+        } else if (request.getParameter("clear") != null) {
+            if (request.getSession().getAttribute("PointList") == null) request.getSession().setAttribute("PointList", new PointList());
+            ((PointList) request.getSession().getAttribute("PointList")).clear();
+            request.getRequestDispatcher("./").forward(request, response);
         } else {
             request.getRequestDispatcher("./").forward(request, response);
         }

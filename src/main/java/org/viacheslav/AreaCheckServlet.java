@@ -18,7 +18,7 @@ public class AreaCheckServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int x = Integer.parseInt(request.getParameter("x"));
+            double x = Double.parseDouble(request.getParameter("x"));
             double y = Double.parseDouble(request.getParameter("y"));
             double r = Double.parseDouble(request.getParameter("r"));
 
@@ -34,7 +34,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
 
             pl.addPoint(point);
-            logger.info(pl.getPoints().toString());
+            //logger.info(pl.getPoints().toString());
             request.getRequestDispatcher("./result.jsp").forward(request, response);
 
 
