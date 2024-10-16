@@ -13,14 +13,44 @@
     <link href="styles/header.css" rel="stylesheet">
     <link href="styles/footer.css" rel="stylesheet">
     <link href="styles/results.css" rel="stylesheet">
+    <link href="styles/modal.css" rel="stylesheet">
 </head>
 <body>
 
 <!-- header -->
 <header>
-    <h2><a href="https://github.com/petrovviacheslav">Petrov Viacheslav Markovich P3208 lab2 var.784670</a></h2>
+    <h2><a href="https://github.com/petrovviacheslav">Petrov Viacheslav Markovich <br/> P3208 lab2 var.784670</a></h2>
 
 </header>
+
+
+<div id="modal">
+    <!--   Svg иконка для закрытия окна  -->
+    <svg id="close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+    <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" id="modal_graph"></svg>
+    <div class="R-radio" id="R-modal">
+        Выбери R:
+        <label>
+            <input type="checkbox" name="r-modal" value="1">1
+        </label>
+        <label>
+            <input type="checkbox" name="r-modal" value="1.5">1.5
+        </label>
+        <label>
+            <input type="checkbox" name="r-modal" value="2">2
+        </label>
+        <label>
+            <input type="checkbox" name="r-modal" value="2.5">2.5
+        </label>
+        <label>
+            <input type="checkbox" name="r-modal" value="3">3
+        </label>
+        <div id="info_modal"></div>
+    </div>
+</div>
+<!-- Подложка под модальным окном -->
+<div class="overlay" id="overlay-modal"></div>
+
 
 <div class="main">
     <!-- main block -->
@@ -66,7 +96,7 @@
                 <div class="Y-text" id="Y">
                     <label>
                         Впиши Y:
-                        <input id="Y-text" class="Y-text-input" type="text" name="y" placeholder="[-3; 5]"
+                        <input id="Y-text" class="Y-text-input" type="number" min="-3" max="5" name="y" placeholder="[-3; 5]"
                                maxlength="14" required/>
                     </label>
                 </div>
@@ -151,7 +181,11 @@
 </footer>
 
 <script src="lib/jquery-3.7.1.min.js"></script>
-<script src="script.js"></script>
-
+<script src="scripts/base.js"></script>
+<script src="scripts/main_svg.js"></script>
+<script src="scripts/paint_coordinates.js"></script>
+<script src="scripts/forms.js"></script>
+<script src="scripts/clear.js"></script>
+<script src="scripts/modal.js"></script>
 </body>
 </html>

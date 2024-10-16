@@ -1,5 +1,6 @@
 package org.viacheslav;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.viacheslav.points.Point;
 import org.viacheslav.points.PointList;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Logger;
 
 public class AreaCheckServlet extends HttpServlet {
@@ -22,7 +24,8 @@ public class AreaCheckServlet extends HttpServlet {
             double y = Double.parseDouble(request.getParameter("y"));
             double r = Double.parseDouble(request.getParameter("r"));
 
-            logger.info(x + " " + y + " " + r);
+
+            logger.info("Получена: " + x + " " + y + " " + r);
 
             Point point = new Point(x, y, r);
             HttpSession session = request.getSession();
@@ -35,12 +38,22 @@ public class AreaCheckServlet extends HttpServlet {
 
             pl.addPoint(point);
             //logger.info(pl.getPoints().toString());
-            request.getRequestDispatcher("./result.jsp").forward(request, response);
-
+            if (request.getParameter("res") == null) request.getRequestDispatcher("./result.jsp").forward(request, response);
+            else {
+                PrintWriter out = response.getWriter();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.findAndRegisterModules();
+                String jsonResponse = objectMapper.writeValueAsString(point);
+                logger.info("Отправляем назад: " + jsonResponse);
+                out.print(jsonResponse);
+                out.flush();
+            }
 
         } catch (Exception e) {
             logger.severe(e.toString());
-            request.getRequestDispatcher("./index.jsp").forward(request, response);
+            request.getRequestDispatcher("./").forward(request, response);
         }
     }
 }

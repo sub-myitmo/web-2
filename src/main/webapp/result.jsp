@@ -17,13 +17,13 @@
 
 <!-- header -->
 <header>
-    <h2><a href="https://github.com/petrovviacheslav">Petrov Viacheslav Markovich P3208 lab2 var.784670</a></h2>
+    <h2><a href="https://github.com/petrovviacheslav">Petrov Viacheslav Markovich <br /> P3208 lab2 var.784670</a></h2>
 </header>
 
 
 
 <main>
-    <h1>Results:</h1>
+    <h1>Результат:</h1>
     <!-- check table -->
     <table id="check" class="table-check">
         <tr class="table-header">
@@ -44,7 +44,7 @@
         </tr>
 
         <% } else {
-            for (Point point : pl.getPoints()) { %>
+            Point point = pl.getLastElem(); %>
         <tr class="<%= point.getIsHit() ? "hit" : "miss" %>">
             <td>
                 <%= point.getX() %>
@@ -62,7 +62,7 @@
                 <%= point.getDate() %>
             </td>
         </tr>
-        <% }} %>
+        <% } %>
     </table>
 
     <h1><a href="./" id="toIndex">На главную</a></h1>
@@ -81,7 +81,7 @@
 </footer>
 
 <script src="lib/jquery-3.7.1.min.js"></script>
-<script src="script.js"></script>
+<script src="scripts/base.js"></script>
 
 </body>
 </html>

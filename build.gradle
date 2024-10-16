@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     compileOnly('jakarta.servlet:jakarta.servlet-api:6.0.0')
+    compileOnly('com.fasterxml.jackson.core:jackson-databind:2.15.0:')
 }
 war {
     archiveFileName = 'server.war'

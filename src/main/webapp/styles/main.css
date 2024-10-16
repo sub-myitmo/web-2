@@ -43,14 +43,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 5px;
+    margin: 30px 5px;
     gap: 10px;
 }
 
 .graph-data > div {
     flex: 50%;
 }
-
 
 button {
     align-items: center;

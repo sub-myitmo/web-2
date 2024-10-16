@@ -23,4 +23,8 @@ public class PointList implements Serializable {
     public List<Point> getPoints() {
         return points;
     }
+
+    public Point getLastElem (){
+        return points.get(points.size() - 1);
+    }
 }
